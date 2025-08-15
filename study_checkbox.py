@@ -20,14 +20,10 @@ def study_checkbox():
     tk.Checkbutton(window, text="C++", variable=var3).pack()
     
     def show_choice():
-        langs = []
-        
-        if var1.get():
-            langs.append("Python")
-        if var2.get():
-            langs.append("Java")
-        if var3.get():
-            langs.append("C++")
+        langs = []        
+        if var1.get():    langs.append("Python")
+        if var2.get():    langs.append("Java")
+        if var3.get():   langs.append("C++")
         
         messagebox.showinfo("Результат", f"Выбраны: {', '.join(langs)}")
             
