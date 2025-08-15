@@ -1,6 +1,7 @@
 import tkinter as tk
 from my_module import study_entry
 from study_radiobutton import study_radio
+from study_checkbox import study_checkbox
 
 
 if __name__ == '__main__':
@@ -18,7 +19,7 @@ if __name__ == '__main__':
     
     tk.Button(root,
               text="Изучение флажков", 
-              command=...).pack(pady=20)
+              command=study_checkbox).pack(pady=20)
     
     
     root.mainloop()

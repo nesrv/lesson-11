@@ -28,6 +28,8 @@ def study_checkbox():
             langs.append("Java")
         if var3.get():
             langs.append("C++")
+        
+        messagebox.showinfo("Результат", f"Выбраны: {', '.join(langs)}")
             
          
         # messagebox.showinfo("Результат", f"Выбран: {var.get()}")
