@@ -16,5 +16,9 @@ if __name__ == '__main__':
               text="Изучение радиокнопок", 
               command=study_radio).pack(pady=20)
     
+    tk.Button(root,
+              text="Изучение флажков", 
+              command=...).pack(pady=20)
+    
     
     root.mainloop()
