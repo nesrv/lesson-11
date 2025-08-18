@@ -18,7 +18,6 @@ for r in range(4):
         blocks.append(canvas.create_rectangle(
             c*50, r*30, c*50+45, r*30+25, fill='blue'))
 
-
 def move_paddle(event):
     pos = canvas.coords(paddle)
     if event.keysym == 'Left' and pos[0] > 0:
@@ -26,7 +25,40 @@ def move_paddle(event):
     elif event.keysym == 'Right' and pos[2] < 400:
         canvas.move(paddle, 20, 0)
 
+dx, dy = -5, -5
+def game_loop():
+    global dx, dy
+    canvas.move(ball, dx, dy)
+    x1, y1, x2, y2 = canvas.coords(ball)
+    
+    # Отскок от стен
+    if x1 <= 0 or x2 >= 400:
+        dx = -dx
+    if y1 <= 0:
+        dy = -dy
+    
+    # Проигрыш при падении вниз
+    if y2 >= 300:
+        print("Проигрыш!")
+        return
+    # Отскок от платформы
+    px1, py1, px2, py2 = canvas.coords(paddle)
+    if y2 >= py1 and x2 >= px1 and x1 <= px2:
+        dy = -dy
+    root.after(40, game_loop)
+    
+    for block in blocks:
+        bx1, by1, bx2, by2 = canvas.coords(block)
+        if y1 <= by2 and y2 >= by1 and x2 >= bx1 and x1 <= bx2:
+            canvas.delete(block)
+            blocks.remove(block)
+            dy = -dy
+            break
+            
+          
+        
+
 
 root.bind('<Key>', move_paddle)
-
+game_loop()
 root.mainloop()
