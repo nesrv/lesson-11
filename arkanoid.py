@@ -39,7 +39,7 @@ def game_loop():
     
     # Проигрыш при падении вниз
     if y2 >= 300:
-        print("Проигрыш!")
+        canvas.create_text(200, 150, text="ИГРА ОКОНЧЕНА", fill='white', font=('Arial', 20))
         return
     # Отскок от платформы
     px1, py1, px2, py2 = canvas.coords(paddle)
@@ -55,7 +55,9 @@ def game_loop():
             dy = -dy
             break
             
-          
+    if y2 >= 300:
+        canvas.create_text(200, 150, text="ИГРА ОКОНЧЕНА", fill='white', font=('Arial', 20))
+        return     
         
 
 
